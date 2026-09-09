@@ -110,7 +110,6 @@ The replay should report `PASS cases=21 nodes=35967`.
 - `audits/` - static and independent certificate audits.
 - `verification/` - external build record and instructions for preserving logs.
 - `docs/CLAIM_SCOPE.md` - exact mathematical and formal claim boundary.
-- `HOW_TO_PUBLISH_ON_GITHUB.md` - step-by-step publication instructions.
 - `generate_manifest.py` - regenerates the repository-wide SHA-256 manifest.
 
 ## Universal Decoupling Theorem: exact scope
