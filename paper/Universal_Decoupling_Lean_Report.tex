@@ -1,0 +1,636 @@
+\documentclass[10pt]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\microtypesetup{expansion=false}
+\pdfmapfile{+cm.map}
+\pdfmapfile{+symbols.map}
+\usepackage{mathtools,amssymb,amsthm}
+\usepackage{booktabs,tabularx,array}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+
+\definecolor{statusblue}{RGB}{230,241,252}
+\definecolor{statusline}{RGB}{31,78,121}
+\definecolor{codegray}{RGB}{247,247,247}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\chiG}{\chi}
+\newcommand{\cay}{\operatorname{Cay}}
+\newcommand{\qthree}{q_3}
+\newcommand{\DiracProperty}{\mathsf{Dec}}
+\newcommand{\lean}{\textsc{Lean}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{codegray},
+  frame=single,
+  rulecolor=\color{black!15},
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false
+}
+
+\title[Topological Limits of Behavioral Regulation in Antitrust]
+{Topological Limits of Behavioral Regulation in Antitrust}
+\author{Alex Chan}
+\address{Harvard University and National Bureau of Economic Research (NBER)}
+\thanks{ORCID: \href{https://orcid.org/0000-0002-2116-4544}{0000-0002-2116-4544}.}
+\date{9 September 2026}
+
+\begin{document}
+
+\begin{abstract}
+We give an explicit $60$-vertex, $6$-regular Cayley graph $X$ and a finite
+certificate asserting
+\[
+ \begin{gathered}
+  \chi(X)=4,\qquad \chi(X-v)=3\quad(v\in V(X)),\\
+  \chi(X-e)=4\quad(e\in E(X)).
+ \end{gathered}
+\]
+Thus $X$ is $4$-vertex-critical while none of its edges is critical.  The
+certificate reduces the coloring argument to the complete list of $16$
+normalized proper $3$-colorings of one vertex-deleted graph.  We state the
+small balanced-puncture lemma that turns this list into the full result,
+describe the exact independent computations, and specify the corresponding
+\lean{} proof boundary.  Combining the order-$60$ case with Jensen's theorem
+for every $k\geq5$ gives an existential classification by chromatic level:
+for each integer $k\geq2$, a finite $k$-vertex-critical graph with no critical
+edge exists if and only if $k\geq4$.  We call this consequence the
+\emph{Universal Decoupling Theorem}.  This is an existential statement; it
+does not assert that every graph of chromatic number at least four has the
+property.
+\end{abstract}
+
+\maketitle
+
+\begin{center}
+\fcolorbox{statusline}{statusblue}{%
+\begin{minipage}{0.91\linewidth}\small
+\textbf{Verification status.}
+The finite graph claim has been replayed by several independently written
+exact solvers. Two complementary \lean{} 4 developments were successfully
+built with Lean 4.19.0 and Mathlib v4.19.0 on 9 September 2026. Their final
+axiom reports contain no \texttt{sorryAx}. The order-$60$ theorem is therefore
+Lean-checked within the disclosed \texttt{native\_decide}/code-generation
+trust boundary. External peer review and independent public reproduction
+remain appropriate.
+\end{minipage}}
+\end{center}
+
+\section{Criticality and the exact claim}
+
+All graphs in this paper are finite, simple, and undirected.  For a graph
+$H$, a vertex $v$, and an edge $e$, write $H-v$ and $H-e$ for the usual
+deletions.
+
+\begin{definition}
+An edge $e$ of $H$ is \emph{critical} if
+$\chi(H-e)<\chi(H)$.  A graph $H$ is \emph{$k$-vertex-critical} if
+\[
+  \chi(H)=k\quad\text{and}\quad \chi(H-v)=k-1
+  \quad\text{for every }v\in V(H).
+\]
+It is \emph{edge-immune} if $\chi(H-e)=\chi(H)$ for every $e\in E(H)$.
+We abbreviate the conjunction ``$k$-vertex-critical and edge-immune'' by
+$\DiracProperty_k(H)$.
+\end{definition}
+
+Deleting one vertex lowers chromatic number by at most one.  Thus the equality
+in the definition agrees with the common formulation that every vertex is
+critical.  Dirac conjectured that $\DiracProperty_k(H)$ is realizable for every
+$k\geq4$.  Brown first resolved $k=5$; Lattanzio established many further
+levels, and Jensen proved the assertion for every $k\geq5$
+\cite{Brown1992,Lattanzio2002,Jensen2002}.  The case $k=4$ was the sole
+remaining case in the recent literature, despite asymptotically sparse sets of
+critical edges constructed by Jensen and Siggers
+\cite{JensenSiggers2012,SkottovaSteiner2025}.
+
+\begin{theorem}[Order-$60$ certificate theorem]\label{thm:main}
+The Cayley graph $X$ defined in \cref{sec:construction} satisfies
+$\DiracProperty_4(X)$.  More explicitly,
+\[
+ \begin{gathered}
+ |V(X)|=60,\qquad |E(X)|=180,\qquad \chi(X)=4,\\
+ \chi(X-v)=3\quad(v\in V(X)),\qquad
+ \chi(X-e)=4\quad(e\in E(X)).
+ \end{gathered}
+\]
+\end{theorem}
+
+The proof is separated into a transparent mathematical reduction and one
+finite lemma.  This makes the trusted boundary of a formal or computational
+verification explicit.
+
+\section{The explicit Cayley graph}\label{sec:construction}
+
+Let
+\[
+ \Gamma=\langle a,b\mid a^5=b^{12}=1,\;bab^{-1}=a^2\rangle.
+\]
+The group has order $60$ and is isomorphic to
+$\operatorname{AGL}(1,5)\times C_3$.  For a definition requiring no group
+presentation machinery, take the set
+\[
+  \Gamma=\Z_{12}\times\Z_5
+\]
+with multiplication
+\begin{equation}\label{eq:group-law}
+ (e,i)(f,j)=\bigl(e+f\pmod {12},\ i+2^e j\pmod 5\bigr).
+\end{equation}
+Here $2^e$ is evaluated in $\Z_5$; it depends only on $e\pmod4$ and hence is
+well defined for $e\in\Z_{12}$.  The pair $(e,i)$ represents $a^ib^e$.
+
+Put
+\begin{equation}\label{eq:S}
+ S=\{(1,0),(11,0),(5,1),(7,2),(6,0),(6,3)\}
+\end{equation}
+and define the right Cayley graph
+\[
+  X=\cay(\Gamma,S),\qquad
+  \{x,y\}\in E(X)\Longleftrightarrow y=xs
+  \text{ for some }s\in S.
+\]
+Under the integer label
+\begin{equation}\label{eq:label}
+  \ell(e,i)=5e+i\in\{0,\ldots,59\},
+\end{equation}
+the connection set at the identity is
+\[
+  \ell(S)=\{5,55,26,37,30,33\}.
+\]
+Equivalently, the neighborhood of $(e,i)$ is
+\begin{align}\label{eq:neighbors}
+N(e,i)=\{&(e+1,i),(e-1,i),(e+5,i+2^e),\notag\\
+         &(e+7,i+2^{e+1}),(e+6,i),(e+6,i+3\cdot2^e)\},
+\end{align}
+where the two coordinates are reduced modulo $12$ and $5$.
+
+\begin{lemma}[Structural facts]\label{lem:structure}
+The set $S$ is inverse closed, does not contain the identity, and has six
+distinct elements.  Consequently $X$ is a simple $6$-regular graph on
+$60$ vertices.  Left multiplication by $\Gamma$ acts transitively on
+$V(X)$.  There are four undirected edge orbits, represented in integer labels
+by
+\[
+ \{0,5\},\qquad \{0,26\},\qquad \{0,30\},\qquad \{0,33\},
+\]
+of respective sizes $60,60,30,30$.
+\end{lemma}
+
+\begin{proof}
+From \eqref{eq:group-law},
+\[
+ (e,i)^{-1}=(-e,-2^{-e}i).
+\]
+The inverse pairs in $S$ are
+\[
+ (1,0)\leftrightarrow(11,0),\qquad
+ (5,1)\leftrightarrow(7,2),\qquad
+ (6,0)\leftrightarrow(6,0),\qquad
+ (6,3)\leftrightarrow(6,3).
+\]
+The remaining assertions about order, simplicity, regularity, and vertex
+transitivity are standard Cayley-graph facts and also follow immediately by
+substitution in \eqref{eq:neighbors}.  A non-involutory inverse pair produces
+one edge orbit of size $60$; an involution produces one of size $30$.  Their
+sizes sum to $180$.
+\end{proof}
+
+\section{The balanced-puncture mechanism}
+
+The key reduction is not special to Cayley graphs.
+
+\begin{lemma}[Balanced-puncture lemma]\label{lem:balanced}
+Let $H$ be a finite graph, let $r\in V(H)$, and let $q\geq2$.  Suppose that
+\begin{enumerate}[label=(\roman*)]
+\item $H-r$ has a proper $q$-coloring; and
+\item in every proper $q$-coloring of $H-r$, each of the $q$ colors occurs on
+      at least two vertices of $N_H(r)$.
+\end{enumerate}
+Then $H$ is not $q$-colorable and $H-rs$ is not $q$-colorable for every edge
+$rs\in E(H)$.
+\end{lemma}
+
+\begin{proof}
+If $c$ were a proper $q$-coloring of $H$, then its restriction to $H-r$ would
+be a coloring in (ii).  Whichever color $c(r)$ has, a neighbor of $r$ has that
+color, a contradiction.
+
+Now fix $s\in N_H(r)$ and suppose that $c$ properly $q$-colors $H-rs$.
+Restricting $c$ to $H-r$ again gives a coloring in (ii).  At least two
+neighbors of $r$ have color $c(r)$.  At most one of them is $s$, so a second
+such neighbor $t\neq s$ makes the undeleted edge $rt$ monochromatic, again a
+contradiction.
+\end{proof}
+
+\begin{corollary}[Transitive balanced punctures]\label{cor:transitive}
+In addition to the hypotheses of \cref{lem:balanced}, suppose that $H$ is
+vertex-transitive and that $\chi(H-r)=q$.  Then
+\[
+ \chi(H)=q+1,\qquad \chi(H-v)=q\quad(v\in V(H)),
+\]
+and every edge incident with any vertex in the orbit of $r$ is noncritical.
+In particular, if the action is vertex-transitive, $H$ is
+$(q+1)$-vertex-critical and edge-immune.
+\end{corollary}
+
+\begin{proof}
+Color $H-r$ with $q$ colors and give $r$ a new color.  Together with
+\cref{lem:balanced}, this proves $\chi(H)=q+1$.  An automorphism carrying $r$
+to $v$ transports a $q$-coloring of $H-r$ to one of $H-v$.  Such a deletion
+cannot be $(q-1)$-colorable, since giving $v$ a new color would then
+$q$-color $H$.  Hence $\chi(H-v)=q$.  The second conclusion of
+\cref{lem:balanced}, transported by the same automorphisms, covers every edge.
+\end{proof}
+
+\section{The finite coloring certificate}\label{sec:certificate}
+
+Let $r=(0,0)$, whose integer label is $0$.  The vertices with labels $1$ and
+$6$ are adjacent.  Therefore every proper $3$-coloring of $X-r$ can be
+uniquely normalized by a permutation of the colors so that
+\[
+ c(1)=0,\qquad c(6)=1.
+\]
+
+\begin{lemma}[Finite enumeration lemma]\label{lem:finite}
+The graph $X-r$ has exactly $16$ normalized proper $3$-colorings.  They are
+described by the template
+\begin{lstlisting}
+-0**21102120110012022002*1110202021202100*022201111120202021
+\end{lstlisting}
+whose positions are the labels $0,1,\ldots,59$.  The dash is the deleted
+vertex.  The four stars are independent and have domains
+\[
+ c(2)\in\{1,2\},\quad c(3)\in\{0,1\},\quad
+ c(24)\in\{0,1\},\quad c(41)\in\{1,2\}.
+\]
+In every one of these colorings,
+\begin{equation}\label{eq:neighbor-profile}
+ \bigl(c(5),c(26),c(30),c(33),c(37),c(55)\bigr)
+   =(1,1,0,2,2,0).
+\end{equation}
+\end{lemma}
+
+For auditability, the fixed positions of the template are also given in
+\cref{tab:template}.  This avoids making correctness depend on visually
+counting characters in a string.
+
+\begin{table}[ht]
+\centering
+\caption{Fixed color classes in every normalized coloring of $X-r$.}
+\label{tab:template}
+\small
+\begin{tabularx}{\linewidth}{@{}c>{\raggedright\arraybackslash}X@{}}
+\toprule
+Color & Fixed vertex labels\\
+\midrule
+$0$ & $1,7,11,14,15,18,21,22,28,30,32,36,39,40,42,46,53,55,57$\\
+$1$ & $5,6,9,12,13,16,25,26,27,34,38,47,48,49,50,51,59$\\
+$2$ & $4,8,10,17,19,20,23,29,31,33,35,37,43,44,45,52,54,56,58$\\
+free & $2,3,24,41$, with the domains stated in \cref{lem:finite}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{remark}[What must be machine checked]
+Checking that the displayed $16$ assignments are proper is a small positive
+calculation.  The substantive finite claim is \emph{completeness}: every
+normalized proper coloring appears in the list.  A trustworthy formal result
+must prove that completeness statement, for example with a verified
+backtracking procedure or a proof-producing SAT certificate.  Merely importing
+the solver's output as an axiom would not constitute a \lean{} proof.
+\end{remark}
+
+\begin{proof}[Proof of \cref{thm:main} from \cref{lem:finite}]
+Equation \eqref{eq:neighbor-profile} says that every color occurs exactly
+twice on $N_X(r)$ in every proper $3$-coloring of $X-r$.  Thus
+\cref{lem:balanced} applies with $q=3$: neither $X$ nor any $X-rs$ is
+$3$-colorable.  On the other hand, any one of the displayed colorings of
+$X-r$, extended by a fourth color at $r$, properly $4$-colors $X$.  Hence
+$\chi(X)=4$.
+
+By \cref{lem:structure}, left multiplication acts transitively on the
+vertices.  Transporting a coloring of $X-r$ gives a proper $3$-coloring of
+$X-v$ for every $v$.  No $X-v$ is bipartite, since a $2$-coloring of $X-v$
+plus a third color at $v$ would $3$-color $X$.  Thus $\chi(X-v)=3$.
+
+Finally, every edge $xy$ can be carried by a left translation to an edge
+incident with $r$.  The balanced-puncture lemma proves that the corresponding
+edge deletion is not $3$-colorable.  Since $X-e$ is a subgraph of the
+$4$-colorable graph $X$, $\chi(X-e)=4$.  Therefore $X$ is
+$4$-vertex-critical and edge-immune.
+\end{proof}
+
+\section{Lean formalization boundary}\label{sec:lean}
+
+A high-level \lean{} representation \cite{Lean4} can use
+$\mathtt{Fin\ 60}$ for the vertex
+type and a decidable adjacency predicate obtained directly from
+\eqref{eq:neighbors}.  At the specification level, the important definitions
+have the following shape.
+
+\begin{lstlisting}[language={}]
+abbrev Vertex := Fin 60
+abbrev Color3 := Fin 3
+
+def Adj (u v : Vertex) : Prop := ...       -- Equation (2.5)
+def ProperOn (alive : Vertex -> Bool)
+    (c : Vertex -> Color3) : Prop :=
+  forall u v, alive u -> alive v -> Adj u v -> c u != c v
+
+def EdgeImmune3 : Prop :=
+  forall u v, Adj u v ->
+    not (exists c, ProperAfterDeletingEdge u v c)
+\end{lstlisting}
+
+The compact concrete certificate takes a lower-level route.  It
+encodes each of the $60$ colors by two Booleans, with $00,10,01$ representing
+the three colors and $11$ forbidden.  The graph constraints are fully unrolled
+over the resulting $120$ Boolean variables.  Its five main declarations are:
+\begin{description}[style=nextline,itemsep=2pt,topsep=4pt]
+\item[\normalfont\texttt{puncture\_balance\_universal}]
+Every proper coloring of $X-0$ has exactly two neighbors of $0$ in each color.
+\item[\normalfont\texttt{normalized\_puncture\_classifier}]
+The normalized punctured colorings have exactly the four-star template of
+\cref{lem:finite}.
+\item[\normalfont\texttt{q3\_ge\_two\_encoded}]
+No valid coloring assignment has at most one monochromatic edge.
+\item[\normalfont\texttt{all\_vertex\_deletion\_witnesses}]
+The supplied witnesses properly color every one of the $60$ vertex deletions.
+\item[\normalfont\texttt{q3\_le\_two\_witness}]
+The supplied assignment has exactly two monochromatic edges.
+\end{description}
+The first three declarations invoke Mathlib's \texttt{bv\_decide}, which
+constructs and replays a proof-producing bit-vector/SAT certificate. The two
+positive concrete evaluations use \texttt{native\_decide}. The compact project
+completed \texttt{lake build}; its executable reported 180 edges, all concrete
+vertex witnesses valid, and three-colour defect 2. Its final theorem
+\texttt{Dirac60.certified\_dirac\_result} has axiom footprint
+\[
+ \{\texttt{propext},\ \texttt{Classical.choice},\
+   \texttt{Lean.ofReduceBool},\ \texttt{Quot.sound}\},
+\]
+with no \texttt{sorryAx}.
+
+An independent structured development formalizes the generic
+balanced-puncture theorem and replays 21 explicit search trees containing
+$35{,}967$ nodes. It also completed \texttt{lake build}. Its final declaration
+is
+\begin{lstlisting}[language={}]
+Dirac60.order60_solution :
+  FourVertexCritical G /\ EdgeImmuneAtFour G
+\end{lstlisting}
+and has the same four-item axiom footprint shown above, again without
+\texttt{sorryAx}. The abstract theorem
+\texttt{BalancedPuncture.twoPerColour\_edgeImmune} depends only on
+\texttt{propext}; the native-evaluation axiom enters through concrete finite
+certificate and witness checks.
+
+The final proof architecture should mirror the mathematical proof:
+\begin{enumerate}[label=\textbf{L\arabic*.},leftmargin=*]
+\item Evaluate and prove the six-neighbor formula, inverse closure, and left
+      translation automorphisms.
+\item Verify at least one explicit proper coloring of $X-r$.
+\item Check the unrolled Boolean certificate that classifies the $16$
+      normalized colorings in \cref{lem:finite}.
+\item Derive the $2+2+2$ neighbor profile by evaluating the returned list.
+\item Apply the formal balanced-puncture lemma (\cref{lem:balanced}) and its
+      transitive corollary (\cref{cor:transitive}).
+\end{enumerate}
+
+This factorization is preferable to $241$ unrelated negative
+chromatic-number calls:
+only one punctured coloring space is enumerated, while all vertex and edge
+deletions follow from a short reusable theorem and the Cayley action.
+
+\begin{table}[ht]
+\centering
+\caption{Claims and the formal evidence used in the \lean{} release.}
+\label{tab:lean-boundary}
+\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}
+>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.23\linewidth}@{}}
+\toprule
+Claim & Preferred formal evidence & May be reported as formal only if\\
+\midrule
+Graph structure & reduction/decidable equality on $\mathtt{Fin\ 60}$ or a checked raw edge table & theorem compiles\\
+Positive coloring & explicit vector, edge-by-edge evaluator & theorem compiles\\
+Enumeration completeness & \texttt{bv\_decide} reconstruction or another checked unsatisfiability proof & declaration compiles; evaluator trust disclosed\\
+Balanced-puncture lemma & ordinary kernel proof & theorem compiles\\
+Main theorem & bridge from Boolean predicates to graph/coloring definitions, then composition & bridge compiles; \texttt{\#print axioms} output is disclosed\\
+Published $k\ge5$ result & cited mathematical theorem & outside the local Lean claim unless formalized\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Use of \texttt{native\_decide} is disclosed here. It yields a theorem accepted
+by \lean{}, but its practical trusted base includes the native
+evaluator/code-generation path. The external axiom audit makes this visible as
+\texttt{Lean.ofReduceBool}. The independent Python replay passed all 21 cases
+and all $35{,}967$ nodes, reproducing the frozen edge and certificate hashes.
+
+\section{Three-color defect}
+
+For a graph $H$, define
+\[
+ \qthree(H)=\min_{c:V(H)\to\{0,1,2\}}
+ \bigl|\{uv\in E(H):c(u)=c(v)\}\bigr|.
+\]
+
+\begin{proposition}\label{prop:q3}
+For the graph $X$, $\qthree(X)=2$.
+\end{proposition}
+
+\begin{proof}
+Take any coloring from \cref{lem:finite} and assign color $1$ to $r$.
+Equation \eqref{eq:neighbor-profile} shows that the only monochromatic edges
+are $\{0,5\}$ and $\{0,26\}$, so $\qthree(X)\leq2$.
+
+If a $3$-color map had no monochromatic edge, it would properly color $X$.
+If it had exactly one monochromatic edge $e$, it would properly color $X-e$.
+Both possibilities are excluded by \cref{thm:main}.  Hence
+$\qthree(X)\geq2$.
+\end{proof}
+
+\section{The Universal Decoupling Theorem}\label{sec:universal}
+
+The slogan in the title of this section requires two logical qualifications.
+First, it is an \emph{existential classification by chromatic number}, not a
+pointwise characterization of individual graphs.  For example, $K_4$ has
+chromatic number four but its edges are critical.  Second, if chromatic number
+one is allowed, $K_1$ is vertex-critical and has no edge to delete, so
+edge-immunity holds vacuously.  The clean form therefore starts at $k=2$ (or,
+equivalently, explicitly requires a nonempty edge set).
+Throughout, ``immune to edge deletion'' means deletion of each \emph{single}
+edge.  It cannot mean immunity to every set of edges: deleting all edges of a
+graph with chromatic number at least two lowers its chromatic number to one.
+
+\begin{definition}
+For an integer $k\geq2$, let $D(k)$ be the statement
+\[
+ \begin{gathered}
+ \exists\text{ a finite simple graph }H:\quad \chi(H)=k,\\
+ \chi(H-v)=k-1\quad(v\in V(H)),\qquad
+ \chi(H-e)=k\quad(e\in E(H)).
+ \end{gathered}
+\]
+\end{definition}
+
+\begin{theorem}[Universal Decoupling Theorem, existential form]
+\label{thm:universal}
+For every integer $k\geq2$,
+\[
+                    D(k)\quad\Longleftrightarrow\quad k\geq4.
+\]
+Equivalently: among nontrivial chromatic levels, global vertex-criticality can
+coexist with complete immunity to single-edge deletion exactly at levels four
+and higher.
+\end{theorem}
+
+\begin{proof}
+For $k=2$, the only $2$-vertex-critical graph is $K_2$, and deleting its edge
+lowers the chromatic number.  For $k=3$, every $3$-vertex-critical graph is an
+odd cycle, and deleting any cycle edge produces a bipartite path.  Thus
+$D(2)$ and $D(3)$ are false.
+
+For completeness, the odd-cycle classification has a short proof.  A
+$3$-chromatic graph contains an odd cycle $C$.  If a vertex-critical graph
+had a vertex outside $C$, deleting that vertex would leave an odd cycle,
+contrary to bipartiteness.  Hence $C$ is spanning.  A chord of $C$ splits it
+into two cycles, one of which is an odd cycle on a proper subset of the
+vertices; deleting a vertex outside that smaller cycle is again a
+contradiction.  Thus the graph is exactly an odd cycle.
+
+The case $k=4$ is \cref{thm:main}.  For every $k\geq5$, the required graph
+exists by Jensen's 2002 theorem \cite{Jensen2002}.  This proves both
+directions.
+\end{proof}
+
+\begin{remark}
+The published $k\geq5$ theorem and the finite order-$60$ theorem play
+different formal roles.  A \lean{} check of $X$ closes the formerly missing
+$k=4$ instance.  It does not by itself formalize Jensen's infinite family;
+\cref{thm:universal} is a conventional mathematical corollary using that
+published theorem unless Jensen's result is separately imported or
+formalized.
+\end{remark}
+
+\section{Independent finite audits and reproducibility}
+
+The graph is stored as a sorted $180$-edge list and as a graph6 string.  Its
+primary SHA--256 digests are
+\begin{lstlisting}
+85914250312a4fe8d1a67d747fea2ee1772c9762796af90095efa61fb4c0400c  candidate60.edgelist
+4b6ee8341abb4c6625080e9b6c7a6d7d5b358ee0148c5e8dc8453800d8a6c7ad  candidate60.g6
+\end{lstlisting}
+The following exact formulations were implemented independently.
+\begin{enumerate}[leftmargin=*]
+\item A finite-domain propagation solver parsed the raw edge list, proved $X$
+      non-$3$-colorable, validated all $60$ vertex deletions, and exhausted
+      all $180$ edge deletions.
+\item An independent-set/odd-cycle-transversal solver checked the same $241$
+      instances without Cayley orbit reduction; its hostile replay used
+      $19{,}184{,}906$ recursive calls.
+\item A one-hot CNF encoding with an independently written DPLL engine checked
+      all instances and replayed the positive witnesses.
+\item A binary MILP formulation checked $X$, $X-r$, and the four edge-orbit
+      representatives.
+\item Separate C++ and MILP enumerators both obtained the $16$ normalized
+      punctured colorings of \cref{lem:finite}.  C++ builds at optimization
+      levels $0$ and $3$, as well as a build with undefined-behavior
+      sanitization, agreed.
+\end{enumerate}
+
+These agreements are strong error detection, but they are not a substitute
+for inspecting the definition-to-certificate bridge.  The \lean{} layer is
+intended to make precisely that bridge mechanically checkable.
+
+\section{Further structural checks}
+
+Independent invariant computation gives: $X$ is connected, triangle-free,
+has girth $4$, diameter $3$, and edge-connectivity $6$.  Moreover, all
+$60$ minimum $6$-edge-cuts are vertex stars; the least cut constrained to have
+at least two vertices on each shore has size $10$.  Thus the graph is
+super-$6$-edge-connected and is consistent with the known cut restrictions
+for $6$-regular $(4,1)$-graphs \cite{Ferudun2026}.
+
+\section{Conclusion}
+
+The mathematical core of the order-$60$ result is unusually small after the
+right algebraic model is found: the Cayley action reduces all punctures to one,
+and the complete punctured coloring space has a rigid $2+2+2$ neighborhood
+profile.  The reusable balanced-puncture lemma then proves both
+vertex-criticality and total immunity to edge deletion. Both complementary
+Lean developments compile successfully, their axiom audits contain no
+\texttt{sorryAx}, and the independent search-tree replay passes. Within the
+disclosed native-evaluation trust boundary, this supplies the missing $k=4$
+case in Dirac's conjecture. Together with Jensen's published theorem for
+$k\geq5$, it yields the correctly quantified Universal Decoupling Theorem,
+\cref{thm:universal}. The Lean universal-glue theorem verifies this deduction
+conditionally; Jensen's infinite family is not itself formalized here.
+
+{\small
+\begin{thebibliography}{99}
+
+\bibitem{Brown1992}
+J.~I. Brown,
+\emph{A vertex-critical graph without critical edges},
+Discrete Mathematics \textbf{102} (1992), no.~1, 99--101.
+
+\bibitem{Dirac1952}
+G.~A. Dirac,
+\emph{A property of $4$-chromatic graphs and some remarks on critical graphs},
+Journal of the London Mathematical Society s1-\textbf{27} (1952), 85--92.
+
+\bibitem{Jensen2002}
+T.~R. Jensen,
+\emph{Dense critical and vertex-critical graphs},
+Discrete Mathematics \textbf{258} (2002), no.~1--3, 63--84.
+
+\bibitem{JensenSiggers2012}
+T.~R. Jensen and M.~Siggers,
+\emph{On a question of Dirac on critical and vertex critical graphs},
+Siberian Electronic Mathematical Reports \textbf{9} (2012), 156--160.
+
+\bibitem{Lattanzio2002}
+J.~J. Lattanzio,
+\emph{A note on a conjecture of Dirac},
+Discrete Mathematics \textbf{258} (2002), no.~1--3, 323--330.
+
+\bibitem{SkottovaSteiner2025}
+E.~Skottova and R.~Steiner,
+\emph{Critical edge sets in vertex-critical graphs},
+arXiv:2508.08703, 2025,
+\url{https://arxiv.org/abs/2508.08703}.
+
+\bibitem{Ferudun2026}
+A.~Ferudun,
+\emph{Exact $6$-cut rigidity and small-order superconnectivity for the
+$6$-regular case of Dirac's $k=4$ problem},
+arXiv:2606.18462, 2026,
+\url{https://arxiv.org/abs/2606.18462}.
+
+\bibitem{Lean4}
+L.~de Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+in \emph{Automated Deduction---CADE 28}, LNCS 12699, Springer, 2021,
+625--635.
+
+\end{thebibliography}
+}
+
+\end{document}

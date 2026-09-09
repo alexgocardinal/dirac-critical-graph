@@ -1,0 +1,24 @@
+PASS dupFail_s0_c0 nodes=1062
+PASS dupFail_s0_c1 nodes=1062
+PASS dupFail_s0_c2 nodes=1062
+PASS dupFail_s1_c0 nodes=1150
+PASS dupFail_s1_c1 nodes=1150
+PASS dupFail_s1_c2 nodes=1150
+PASS dupFail_s2_c0 nodes=716
+PASS dupFail_s2_c1 nodes=716
+PASS dupFail_s2_c2 nodes=716
+PASS dupFail_s3_c0 nodes=156
+PASS dupFail_s3_c1 nodes=156
+PASS dupFail_s3_c2 nodes=156
+PASS dupFail_s4_c0 nodes=840
+PASS dupFail_s4_c1 nodes=840
+PASS dupFail_s4_c2 nodes=840
+PASS dupFail_s5_c0 nodes=1914
+PASS dupFail_s5_c1 nodes=1914
+PASS dupFail_s5_c2 nodes=1914
+PASS missing_c0 nodes=6151
+PASS missing_c1 nodes=6151
+PASS missing_c2 nodes=6151
+PASS all_cases=21 total_nodes=35967
+SCOPE: 18 unique-neighbour failures plus 3 missing-colour failures
+CONSEQUENCE: every punctured colouring has exact 2+2+2 neighbour counts

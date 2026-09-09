@@ -1,0 +1,5 @@
+'BalancedPuncture.twoPerColour_edgeImmune' depends on axioms: [propext]
+'Dirac60.valid_no_extension' depends on axioms: [propext, Quot.sound]
+'Dirac60.exact_two_two_two_profile' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+'Dirac60.order60_solution' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+'UniversalDecoupling.iff_ge_four' depends on axioms: [propext, Quot.sound]

@@ -1,0 +1,24 @@
+PASS dupFail_s0_c0 nodes=1062
+PASS dupFail_s0_c1 nodes=1062
+PASS dupFail_s0_c2 nodes=1062
+PASS dupFail_s1_c0 nodes=1150
+PASS dupFail_s1_c1 nodes=1150
+PASS dupFail_s1_c2 nodes=1150
+PASS dupFail_s2_c0 nodes=716
+PASS dupFail_s2_c1 nodes=716
+PASS dupFail_s2_c2 nodes=716
+PASS dupFail_s3_c0 nodes=156
+PASS dupFail_s3_c1 nodes=156
+PASS dupFail_s3_c2 nodes=156
+PASS dupFail_s4_c0 nodes=840
+PASS dupFail_s4_c1 nodes=840
+PASS dupFail_s4_c2 nodes=840
+PASS dupFail_s5_c0 nodes=1914
+PASS dupFail_s5_c1 nodes=1914
+PASS dupFail_s5_c2 nodes=1914
+PASS missing_c0 nodes=6151
+PASS missing_c1 nodes=6151
+PASS missing_c2 nodes=6151
+PASS cases=21 nodes=35967
+EDGE_SHA256 85914250312a4fe8d1a67d747fea2ee1772c9762796af90095efa61fb4c0400c
+CERT_SHA256 5959d3f0943bba98e2278ae567f7bbe2a406e41f7ce2015fa6e0101b9449e195

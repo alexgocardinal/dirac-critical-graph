@@ -1,0 +1,64 @@
+{
+  "format": "dirac-k4-order60-certificate-v1",
+  "frozen_date": "2026-09-09",
+  "status": "exact computation-backed solution; pending external peer review",
+  "construction": {
+    "group_presentation": "<a,b | a^5=b^12=1, b*a*b^-1=a^2>",
+    "isomorphism_type": "AGL(1,5) x C3",
+    "coordinate_set": "Z12 x Z5",
+    "vertex_label": "label(e,i)=5e+i",
+    "multiplication": "(e,i)*(f,j)=((e+f) mod 12, (i+2^e*j) mod 5)",
+    "right_cayley_generators": [5, 55, 26, 37, 30, 33],
+    "generator_coordinates": [[1,0], [11,0], [5,1], [7,2], [6,0], [6,3]],
+    "inverse_pairs": [[5,55], [26,37], [30,30], [33,33]]
+  },
+  "graph": {
+    "order": 60,
+    "size": 180,
+    "regular_degree": 6,
+    "connected": true,
+    "triangle_free": true,
+    "girth": 4,
+    "diameter": 3,
+    "edge_connectivity": 6,
+    "super_6_edge_connected": true,
+    "minimum_6_cuts": 60,
+    "vertex_orbit_sizes": [60],
+    "edge_orbits": [
+      {"representative": [0,5], "size": 60},
+      {"representative": [0,26], "size": 60},
+      {"representative": [0,30], "size": 30},
+      {"representative": [0,33], "size": 30}
+    ]
+  },
+  "claims": {
+    "chromatic_number": 4,
+    "vertex_deletions_three_colourable": "60/60",
+    "edge_deletions_non_three_colourable": "180/180",
+    "four_vertex_critical": true,
+    "critical_edge_count": 0,
+    "q3": 2,
+    "root_neighbour_colour_split": [2,2,2],
+    "q3_witness_monochromatic_edges": [[0,5], [0,26]]
+  },
+  "primary_files": {
+    "edge_list": "candidate60.edgelist",
+    "graph6": "candidate60.g6",
+    "root_deletion_colouring": "candidate60_Gminus0.coloring",
+    "structural_verifier": "verify_structure.py",
+    "exhaustive_colouring_verifier": "verify_candidate60.cpp",
+    "hash_manifest": "SHA256SUMS"
+  },
+  "primary_hashes_sha256": {
+    "candidate60.edgelist": "85914250312a4fe8d1a67d747fea2ee1772c9762796af90095efa61fb4c0400c",
+    "candidate60.g6": "4b6ee8341abb4c6625080e9b6c7a6d7d5b358ee0148c5e8dc8453800d8a6c7ad",
+    "candidate60_Gminus0.coloring": "b89a814e7bffc4a891c78cd511d719573aad437a7dbd8c203e2a57c292ebcf7e"
+  },
+  "independent_exact_formulations": [
+    "finite-domain propagation on the raw edge list",
+    "independent-set odd-cycle-transversal branching on all 241 instances",
+    "one-hot CNF with an independently written DPLL solver on all 241 instances",
+    "binary MILP/HiGHS on the graph, one vertex deletion, and four edge-orbit representatives"
+  ],
+  "evidence_caveat": "No LRAT/DRAT or proof-assistant certificate is included. Reproduce independently before a formal public announcement."
+}

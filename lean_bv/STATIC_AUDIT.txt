@@ -1,0 +1,10 @@
+AUDIT_GENERATION_OK
+edge_sha256=85914250312a4fe8d1a67d747fea2ee1772c9762796af90095efa61fb4c0400c
+lean_sha256=1501ae2d85e65ba49bffb7c26d31fae384300b6c04c649accb0f2e749512a9af
+n=60 m=180 degree=6
+normalized_puncture_colourings=16
+neighbor_profile=2+2+2
+defect_witness_bad_edges=0-5,0-26
+
+STATUS: host-side data/source generation audit passed; Lean elaboration was
+not run because no Lean/Lake toolchain is installed in this workspace.

@@ -1,0 +1,203 @@
+TOPOLOGICAL LIMITS OF BEHAVIORAL REGULATION IN ANTITRUST
+
+Alex Chan
+Harvard University and National Bureau of Economic Research (NBER)
+ORCID: https://orcid.org/0000-0002-2116-4544
+
+AN ORDER-60 SOLUTION OF DIRAC'S k=4 PROBLEM
+AND THE EXISTENTIAL DECOUPLING CLASSIFICATION
+
+Status date: 9 September 2026
+
+
+1. THE EXPLICIT GRAPH
+
+Let Gamma have underlying set Z_12 x Z_5 and multiplication
+
+    (e,i)(f,j) = (e+f mod 12, i + 2^e j mod 5).
+
+This is well defined because 2^12 = 1 modulo 5.  Let
+
+    S = {(1,0), (11,0), (5,1), (7,2), (6,0), (6,3)}.
+
+The set S is inverse closed and does not contain the identity.  Define G_60
+to be the undirected Cayley graph Cay(Gamma,S): its vertices are the 60
+elements of Gamma, and x is adjacent to xs for every x in Gamma and s in S.
+Under the integer label
+
+    label(e,i) = 5e+i,
+
+the identity is vertex 0 and
+
+    N(0) = {5,26,30,33,37,55}.
+
+This definition gives a finite simple, vertex-transitive, 6-regular graph
+with 60 vertices and 180 edges.  The frozen edge-list file has SHA-256
+
+    85914250312a4fe8d1a67d747fea2ee1772c9762796af90095efa61fb4c0400c.
+
+
+2. THE BALANCED-PUNCTURE CERTIFICATE
+
+The decisive finite statement is the following.
+
+Balanced-puncture lemma.  The graph G_60-0 has a proper 3-colouring.  In
+every proper 3-colouring of G_60-0, each of the three colours occurs exactly
+twice on N(0).
+
+For a transparent normal form, the surviving edge 1-6 can be assigned
+colours 0 and 1.  Exhaustive enumeration then gives exactly 16 normalized
+colourings, or 96 colour-labelled colourings before quotienting by the six
+global colour permutations.  In every normalized colouring,
+
+    (c(5),c(26),c(30),c(33),c(37),c(55)) = (1,1,0,2,2,0).
+
+The Lean source/certificate package encodes one positive colouring, eighteen
+search-tree certificates excluding a unique occurrence of a specified
+colour on the punctured neighbourhood, and three search-tree certificates
+excluding a missing colour.  Together these imply the exact 2+2+2 split.
+
+
+3. WHY THE CERTIFICATE PROVES THE k=4 RESULT
+
+First, a proper 3-colouring of G_60-0 can be extended by giving vertex 0 a
+fresh fourth colour, so chi(G_60) is at most 4.  If G_60 itself had a proper
+3-colouring, its restriction to G_60-0 would be one of the colourings in the
+balanced-puncture lemma.  Whichever colour were assigned to 0 already occurs
+on two neighbours of 0.  This is impossible in a proper colouring.  Hence
+
+    chi(G_60) = 4.
+
+Second, left multiplication in Gamma acts transitively by graph
+automorphisms.  It transports the displayed colouring of G_60-0 to a proper
+3-colouring of G_60-v for every vertex v.  No G_60-v can be 2-colourable,
+because giving v a third colour would then 3-colour G_60.  Therefore
+
+    chi(G_60-v) = 3 for every vertex v.
+
+Third, suppose that deleting an edge uv produced a proper 3-colouring.
+Translate u to 0 by a left multiplication, and let s be the translated image
+of v.  Restrict this supposed colouring of G_60-0s to G_60-0.  The colour
+assigned to 0 occurs on exactly two neighbours of 0.  Deleting 0s can remove
+at most one of the two resulting conflicts, so the other incident edge is
+still monochromatic.  This contradiction proves
+
+    chi(G_60-e) = 4 for every edge e.
+
+Consequently G_60 is 4-vertex-critical and has no critical edge.  It is an
+explicit solution of Dirac's k=4 existence problem, subject to the
+verification boundary in Section 6 below.
+
+
+4. THE CORRECT UNIVERSAL STATEMENT
+
+For an integer k at least 2, define D(k) to mean:
+
+    There exists a finite simple graph H such that
+
+        chi(H) = k,
+        chi(H-v) = k-1 for every vertex v, and
+        chi(H-e) = k for every edge e.
+
+The corrected Universal Decoupling Theorem is the existential classification
+
+    For every integer k >= 2, D(k) holds if and only if k >= 4.
+
+Here "immune to edge deletion" means immune to deletion of every individual
+edge.  It cannot mean immunity to all sets of edges: deleting the entire edge
+set lowers the chromatic number of every graph with chromatic number at least
+2 to 1.
+
+
+5. PROOF OF THE EXISTENTIAL CLASSIFICATION
+
+Necessity for k=2.  A 2-chromatic graph contains an edge uv.  If a
+2-vertex-critical graph containing uv had a third vertex w, then deleting w
+would leave the edge uv and hence a graph of chromatic number at least 2.
+That contradicts vertex-criticality.  The graph must therefore be K_2, and
+its unique edge is critical.  Thus D(2) is false.
+
+Necessity for k=3.  Let H be 3-vertex-critical.  Since H is not bipartite,
+it contains an odd cycle C.  No vertex lies outside C, because deleting such
+a vertex would leave the 3-chromatic subgraph C.  The cycle C has no chord:
+a chord divides an odd cycle into two cycles of opposite parity, one of which
+is a proper odd cycle, and deletion of a vertex omitted by that proper cycle
+would again leave a 3-chromatic graph.  Hence H is precisely an odd cycle.
+Deleting any edge turns it into a path, so every edge is critical.  Thus D(3)
+is false.
+
+Sufficiency for k=4 is the graph G_60 proved above.
+
+Sufficiency for every k>=5 is Jensen's 2002 theorem: for every such k there
+exists a k-vertex-critical graph without a critical edge.  It also follows
+from the stronger theorem of Skottova and Steiner that (k,r)-graphs exist for
+every k>=5 and r>=1, by setting r=1.
+
+Combining these four cases proves D(k) if and only if k>=4 for k>=2.
+
+This is not a pointwise characterization of graphs.  The formula
+
+    H is vertex-critical and edge-immune  iff  chi(H) >= 4
+
+is false: K_4 is vertex-critical and 4-chromatic, but every edge of K_4 is
+critical.  The words "there exists" in D(k) are indispensable.  If the
+classification is instead quantified over every natural number k, D(k)
+should additionally require E(H) to be nonempty.  Otherwise K_1, and under
+the usual conventions the null graph, create vacuous low-chromatic
+exceptions.
+
+
+6. VERIFICATION AND TRUST BOUNDARY
+
+The graph and the balanced-puncture property have been checked by several
+independently written exact programs.  Separate finite-domain, CNF/DPLL,
+odd-cycle-transversal, and MILP formulations agree.  The graph-agnostic
+audits directly check G_60, all 60 vertex deletions, and all 180 edge
+deletions; the compact proof additionally checks the complete punctured
+colouring space and the Cayley translations.
+
+A Lean 4 source/certificate package formalizes the group law, edge relation,
+punctured colourings, exhaustive balanced-puncture certificates, and symmetry
+transport. On 9 September 2026 both complementary projects completed external
+builds with Lean 4.19.0 and Mathlib v4.19.0. The compact executable reported
+180 edges, every concrete vertex witness valid, and three-colour defect 2.
+The structured theorem
+
+    Dirac60.order60_solution :
+      FourVertexCritical G and EdgeImmuneAtFour G
+
+compiled successfully. Its axiom report was
+
+    [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+
+with no sorryAx. The independent structured replay passed all 21 cases and
+all 35,967 nodes, and its corrected SHA-256 manifest passed in full. Thus the
+order-60 k=4 statement is Lean-checked within the disclosed native-code
+evaluation trust boundary represented by Lean.ofReduceBool.
+
+Even after these builds, the whole Universal Decoupling Theorem is not thereby
+formalized end to end in Lean.  The new k=4 implication would be
+Lean-checked, and the k=2 and k=3 arguments are elementary, but the k>=5
+implication still invokes Jensen's published theorem.  A fully Lean-verified
+universal theorem requires a formalization of Jensen's general construction
+and proof.  Merely declaring Jensen's result as a Lean axiom does not provide
+kernel-checked evidence for that imported mathematical claim.
+
+Finally, this result has not yet undergone independent public reproduction or
+peer review.  Those steps remain necessary before presenting it as an
+accepted resolution in the literature.
+
+
+REFERENCES
+
+T. R. Jensen, "Dense critical and vertex-critical graphs," Discrete
+Mathematics 258 (2002), 63-84.
+https://doi.org/10.1016/S0012-365X(02)00262-5
+
+E. Skottova and R. Steiner, "Critical edge sets in vertex-critical graphs,"
+arXiv:2508.08703.
+https://arxiv.org/html/2508.08703
+
+A. Ferudun, "Exact 6-cut rigidity and small-order superconnectivity for the
+6-regular case of Dirac's k=4 problem," arXiv:2606.18462v1.
+https://arxiv.org/html/2606.18462v1

@@ -1,0 +1,419 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+/Title (Topological Limits of Behavioral Regulation in Antitrust)
+/Author (Alex Chan)
+/Subject (An explicit order\05560 certificate for Dirac\047s k\0754 critical\055graph problem)
+/Keywords (graph theory\054 chromatic criticality\054 Lean 4\054 antitrust)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 4
+/Kids [ 4 0 R 14 0 R 17 0 R 19 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Contents 5 0 R
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 6 0 R
+/F1-0 7 0 R
+/F2 8 0 R
+/F2-0 9 0 R
+/F3 10 0 R
+/F3-0 11 0 R
+/F4 12 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ 13 0 R ]
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Length 4010
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+.85098 .886275 .909804 RG
+n 51.84 37.44 m 560.16 37.44 l S
+BT /F1 8 Tf 9.6 TL ET
+.376471 .490196 .545098 rg
+BT 1 0 0 1 51.84 24.48 Tm (Dirac60 Lean verification report - 9 September 2026) Tj T* ET
+BT 1 0 0 1 534.808 24.48 Tm (Page 1) Tj T* ET
+Q
+q
+1 0 0 1 57.84 685.04 cm
+q
+.086275 .227451 .372549 rg
+BT 1 0 0 1 0 30 Tm /F2 22 Tf 26 TL 15.367 0 Td (An Explicit Order-60 Lean Certificate for Dirac's) Tj T* 98.197 0 Td (k=4 Critical-Graph Problem) Tj T* -113.564 0 Td ET
+Q
+Q
+q
+1 0 0 1 57.84 656.04 cm
+q
+.270588 .352941 .392157 rg
+BT 1 0 0 1 0 4 Tm /F3 11 Tf 15 TL 119.658 0 Td (Final verification report | Lean 4.19.0 and Mathlib v4.19.0) Tj T* -119.658 0 Td ET
+Q
+Q
+q
+1 0 0 1 59.4 561.04 cm
+q
+.909804 .960784 .913725 rg
+n 0 75 493.2 -75 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 12 7 cm
+q
+BT 1 0 0 1 0 47.7 Tm 14.5 TL /F2 10.3 Tf 0 0 0 rg (VERIFIED STATUS) Tj /F3 10.3 Tf  T* -0.001269 Tw (Both complementary Lean developments built successfully. The final order-60 theorems report no ) Tj /F4 10.3 Tf (sorryAx) Tj /F3 10.3 Tf (. All) Tj T* 0 Tw (21 independent search-tree certificates and all 35,967 nodes replayed successfully; the corrected integrity) Tj T* (manifest passed in full.) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+.180392 .490196 .196078 RG
+1.2 w
+n 0 75 m 493.2 75 l S
+n 0 0 m 493.2 0 l S
+n 0 0 m 0 75 l S
+n 493.2 0 m 493.2 75 l S
+Q
+Q
+Q
+q
+1 0 0 1 57.84 549.04 cm
+Q
+q
+1 0 0 1 57.84 517.04 cm
+q
+.086275 .227451 .372549 rg
+BT 1 0 0 1 0 4 Tm /F2 16 Tf 20 TL (1. Result) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.84 480.04 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 18.7 Tm /F3 10.3 Tf 14.5 TL (There is an explicit finite graph X on 60 vertices such that X is 4-vertex-critical and deleting any single edge leaves its) Tj T* (chromatic number equal to 4. Equivalently, X has no critical edges. The formal structured conclusion is:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.84 453.04 cm
+%PreformattedPara
+0 0 0 rg
+BT 1 0 0 1 8 12.3 Tm /F4 7.7 Tf 10 TL (Dirac60.order60_solution :) Tj T* (  FourVertexCritical G /\\ EdgeImmuneAtFour G) Tj T* ET
+Q
+q
+1 0 0 1 57.84 415.04 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 18.7 Tm /F3 10.3 Tf 14.5 TL (The compact development separately proves that X is not 3-colourable, gives a proper 4-colouring, checks a proper) Tj T* (3-colouring after every vertex deletion, and proves that no 3-colour assignment has at most one monochromatic edge.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.84 383.04 cm
+q
+.086275 .227451 .372549 rg
+BT 1 0 0 1 0 4 Tm /F2 16 Tf 20 TL (2. Explicit graph) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.84 360.54 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.2 Tm /F3 10.3 Tf 14.5 TL (Let Gamma have underlying set Z/12Z x Z/5Z with multiplication) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.84 303.54 cm
+%PreformattedPara
+0 0 0 rg
+BT 1 0 0 1 8 42.3 Tm /F4 7.7 Tf 10 TL (\(e,i\)\(f,j\) = \(e+f mod 12, i + 2^e j mod 5\).) Tj T*  T* (S = {\(1,0\),\(11,0\),\(5,1\),\(7,2\),\(6,0\),\(6,3\)}.) Tj T* (X = Cay\(Gamma,S\),    label\(e,i\) = 5e+i.) Tj T* (N\(0\) = {5,26,30,33,37,55}.) Tj T* ET
+Q
+q
+1 0 0 1 57.84 280.04 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4.2 Tm /F3 10.3 Tf 14.5 TL (This is a finite simple vertex-transitive 6-regular graph with 60 vertices and 180 edges. Its frozen edge-list digest is:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.84 263.04 cm
+%PreformattedPara
+0 0 0 rg
+BT 1 0 0 1 8 2.3 Tm /F4 7.7 Tf 10 TL (85914250312a4fe8d1a67d747fea2ee1772c9762796af90095efa61fb4c0400c) Tj T* ET
+Q
+ 
+
+Q
+
+q
+0.0 0.0 612 792 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+42 638 528 124 re
+f*
+0.090196 0.247059 0.403922 rg
+BT
+/F2-0 19 Tf
+22.8 TL
+ET
+BT
+1 0 0 1 172.7245 727 Tm
+(Topological Limits of Behavioral) Tj
+T*
+ET
+BT
+1 0 0 1 211.5225 704 Tm
+(Regulation in Antitrust) Tj
+T*
+ET
+0.14902 0.231373 0.301961 rg
+BT
+/F3-0 11.5 Tf
+13.8 TL
+ET
+BT
+1 0 0 1 281.2463 681 Tm
+(Alex Chan) Tj
+T*
+ET
+BT
+/F3-0 9.8 Tf
+11.76 TL
+ET
+BT
+1 0 0 1 163.116 664 Tm
+(Harvard University and National Bureau of Economic Research \050NBER\051) Tj
+T*
+ET
+0.247059 0.388235 0.482353 rg
+BT
+/F3-0 9 Tf
+10.8 TL
+ET
+BT
+1 0 0 1 249.129 648 Tm
+(ORCID\072 0000\0550002\0552116\0554544) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+6 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+7 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+8 0 obj
+<<
+/BaseFont /Times-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+9 0 obj
+<<
+/BaseFont /Times-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+10 0 obj
+<<
+/BaseFont /Times-Roman
+/Encoding /WinAnsiEncoding
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+11 0 obj
+<<
+/BaseFont /Times-Roman
+/Encoding /WinAnsiEncoding
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+12 0 obj
+<<
+/BaseFont /Courier
+/Encoding /WinAnsiEncoding
+/Name /F4
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+13 0 obj
+<<
+/A <<
+/S /URI
+/Type /Action
+/URI (https\072\057\057orcid\056org\0570000\0550002\0552116\0554544)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 239 642 373 655 ]
+/Subtype /Link
+/Type /Annot
+>>
+endobj
+14 0 obj
+<<
+/Contents 15 0 R
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font 16 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+>>
+endobj
+15 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ]
+/Length 1575
+>>
+stream
+Gatm;9lK&M&A@7.bgBS3%&n.gfE+X5CqEfVh2R!R+W"=V/T)l_.oC<amlR=U=\3A?0G5Uj6^+$!o,cdc$n/iWHd=0lRi,Jf1LM9J(;Kta_!DHac-Cd0OX-`:![L>]0+NQ/p`Bt'gSZh2+X9PYIS>=n.L77k=Od@T_S]NkBk$g18^qZMr&>$m"sc_g9-YQfi$-ZD]7BRi\ue+`K$,[3r$lKR723HAY2Dn$EZm5VUfL<MQ*(Qi+b^0+18:4q)Ed:Rk:lc6ZO\tVG[ir\#u*lns2C<+][?)LR.`3s[Q%_3'21HfCdD`A$."N^&G,C$0+?91paH>ho?2IkYU3HPO4sLZ5(UJ,%@BII->M#++^e=9-dfH_A^+9[B%=8bGld1^X=3acYZS\CN90]f&!f.L!h[/WjU\RVY!WH[L6l.V,)91!1=K_)A"geN#Yj,6Y62%_`*Fo9(aXX7X=i?M;Riu7YE1;bRd!_Z[8]fG$huo^^mdeG<<IhcKcRLR0h![uC2PMe8qVBNR45D.CMbA+A;2DKaaZEJki4[SCWL(n.f%*Hj[*gJR_/qTSn2CM!]M(.jdT0+Xu0:?2"F5,c%Q8Hn-\%]nl6!-T[79,!&l$*1:\fe_+5>uGUCJrLGF6!l>DM`=*PE7:p&21='H5teX/VA92+:MShNHF%eAl]`7rJuofb!:XkPV?E]1>LN2;LE,0OD^Hi`iiFN;6-oa8J`\AA_of)RI>_=JhB$"'e;7mWd_=<T(9Qc7`PKYVL-22rG`"%o$`)kWIK^aEY.6,)+n(5T>J"jSmB(<T)Ra7O-Z"k+(]7RL4ta3"(ro8`p'R8m&)c0.^[Ya.b8VEpJ*KjONFVbah>a,kEsUn52r@hQ(r)nq5`mW*D7=]MU#+$sE&aMC(dPURn8%[i@kehHoJd@D3!"5:=cREY'?&f+9^F"oGg0mOT/e5a(78@fZ)!Qheu[%B8i!]9:Z<D"NEm[SKj+a"pi^%G))'m):%%J"GF3u9=&$N2uoQI:R_irQ3fdb/U1?6\9!^>`&`9'C\6j?L_+dh?U8?+:YX$dl"A=<3B#iH?!W1_I[j4#JLg@B=.>X&\E^N["h]I7J_O5aP#u]c$1*"L2>9H\#S5s5Vuj8g</e;7IhC+\8_SVB1a(=F>@e/pB=L:.a;]2;-!,!4+d5aIO@cP3b)pI+,20HW+>%/j+.>gHoHN3.k-6MmkX$T>]f$r-u-Zq:VB+"JL#XH=S%C/)4fD,3>.%f<Z]5$L#=<5e&JqI9U.cDcNp_'$J6V3h8pMF^F]YS`?ERJtKc`emCUe=+Jo<c8O&?#>;`Kc;rhZ7ddqhe9'e:(&UcVnY"Wc/"T2\)XC*Z(tcYmIXi@QT>]!,WS>.Z1t_TmIUqqSFG-6<qV%S"-_^%0SRHST<Gq,=m8Kdd?,9b"F;H9N(V^$4@7AO`1MM#u2nJE\`6C#;:;lKi_%,udFToG&V7EfE%63j&!O%0\Q_)Ouqr<W'rR4?n4e7\E1J`Dd_+qGqH</S.(4NVd4NcX;%al/'F>mq2oma''GGF\G]cR`Zpotc4j*hO5@G&Fm(tQumGG"^b^:G,Nr<r30XuH~>
+endstream
+endobj
+16 0 obj
+<<
+/F1 6 0 R
+/F2 8 0 R
+/F3 10 0 R
+/F4 12 0 R
+>>
+endobj
+17 0 obj
+<<
+/Contents 18 0 R
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font 16 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+>>
+endobj
+18 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ]
+/Length 2155
+>>
+stream
+Gatm;CNJ7=')h6*Z!ZqKksu3`^3qAQ-4d"gS*;o;ql.-dJ]O[@"<nZo[&s?(/jP;Wj+l@.[Uk:0J6e[.3+p>UUgN9aQYV+Q(\%>S"30;o"r7Fu>eGj@MkdIG6(W`u%RH\a4A-eFkUMPMj%i/S,V7#HLpA.`@1>dH"tUcJ'q?A*Mrnp%,"Ta#K.'CQN'S!k+Y-FrP1W8Y9/hE]M%*+!b(QXqiV8BhU.dq!O.q1U1pWFDYYmDfYgpb1*""[Gf&D",#'e5<B5mAY/q.mspD8kL+:n(WV9d'm+kdn6J[R]NcWhM/b6$C>\TWLV,8-MZEC0PY17lG'2u/4?]>^DWjZo1E!'GB#5>D8>]s25hU$g`0WD.LcQ+P/67C5^B`Je@2@cW"Ee1?Y*Fsi\k8nP#@ifeYif<$GQ(u8CY'K+%RW;ek6=DP5Yem`bKN&V1CaP/FjLj:\/,liSA`uREieOrn.8^S:$)US.gM-X3W8o9/s*k+dKU9Oeq#cP[.)tEDkXHqM0!6`:EQ;EG?2Pm*t%WdOeE%PooPHf`jTk&9If(9Uaa-H!p,rQIUXpj=&e4TH>.]fn^-bpfM9M/s]Bkh`b8X6_CPfMZ1;j%koi;:Y`YM@[F7>e#bY!i9-&(*"1#i.+BC\28n/M*i.p,:RmZgC"9't-[5)XGZl_$-q`6n@1(9&ZEX9a+BL/(+hE?""P"M_PX3Ybk'gX1n46,Lf3_M%-sM_Feo#^W8S@gs)$M80n*T&sb[Of[DcDSR.o&Hc_Hcnt]YJ:Vqp-&_ECO9VbgV`EA1P,I/l\AW`*C'WJ$h0J!j<7EXma>_[58QID^<T74H*/t*JG;+5V0`6i$;MB#2mEe-fNe_+D_'Ic^1Ap%,u%p;4,@`UmE.,qa%<[<`h1#_pAOn%Ome8#VD-1(a*@ikS9oS\Ld67C4m2pV9>o.mQ%q@(VaIipBb97C3Nqdt%o!WF3*[<Q3]s/h^mrhs0^qNAS3VBaX)BA*bXo\'M?m[NM0&pQd<GtCS$0:Gp7F^G2+Gcg0t&8bEDY-]a"jom?`oga+_J#0Q!4<-?_RP_\D[-I$Gq>T\.^Gh>:YS6:2Gu*<Ifdm5.f9].CX9mau$dQH(Mt5qU`99-CRen38g>EkR^$1'kZI?g0?JYg/G<5S6kJa5C'WjaBaa7YlZi#Iu3bZTVYBE?%U.-f;2U>#/Wqd8H1kRBh_QKPUZ:77=fgm\68T4LC2!A+^i,D(UoL/(7)Sf<;fN$:4XFoh8*\@8]qRe+.^ARF'T)mV)]_Q[IjjQ"f41DXK@3,,tbkaePj:l']<[XI(_pX?a"n.rdYFo.B:WMof4aZ^12L_6)\Z7a^J0XH"ZSh-NR<+"[B]F&R_tO@^lTjnrc,3#5VUUn%/>Eu&/4MhsU]iWRSDFUuP0BWJ3)*qjERN#QLUmFYgT,h:Kq*(U6]VkP>3Kf_\s5D_Fr^!AYo^>#)iI?/O?_Em/o0p<\ksF@RD+UJ,N1<JqWoWNM1S.'+q6?nmB_H^0loK@KBq>ofAgKAKkolkTBc,nGjA\G5AWF>c3bZ]jWRFkYlsfK`sss`;=k-3^S,FGUtqOP"o3NgdC_;VOG&1>Z@cM@`RcWriBSEpZQ8XERM\1MOk?fel:s766;L==-oqi[#^<spZPgJ!elMX9c7;FH($3SO1.GD5e%=e/!7(J1UdSZjDLg$ZQPZn7icNE!^mt8[+Z-UB=*T)iNrE#XW?jO,[A&bRl`/P*$[EdSnSA#UP20k#XbT<&\r8$%,2TnK5XAJ7SK%u/b^$ktEH\"GooBUuQ:d*NI_bKn-ScZ<-e4qjQ!X<e=3b:Q,1e(ke.B)GSKRPSjrY7[DK8*OQ.!NadqW'cF&+'n3l]H7L/+5(S*fM#8iMPQeWbmB[(RK)jX*nLk<%,U`O(5`\gdEm'gLM/aEM#ar^k3m=UoTUAMYfW/_8@l#LQF1b?YN4)f6Ts;:U#ObfG3\6N,t/>DJO#P_PZ"i0.TqXe+"r:lK,LhU@+[L]((\.[+Z=%P]3PSqrEqa5VR8BlD`rnH7/prd@RFKId"\A[[br0/e/lT]d4CpP9!<`h<P'Z-(_8=n`Bq>=f_BosV"_.8_KS]-ds(FI*%XdTlYBq#l/+7n'0l=@q,kcj:l11">c?gU;FLT[dR?f<TH<O/Uh?q?AW5q?m@P-6E~>
+endstream
+endobj
+19 0 obj
+<<
+/Contents 20 0 R
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font 16 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+>>
+endobj
+20 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ]
+/Length 1101
+>>
+stream
+Gatm89on$e&A@sB$kO+q$B%Q*b6<4E-G*!1"PCXFcpN<e9oX"5,t]I4a8YfR;I7>3D3IV#5Vf=tbaZX30*Y1d3':a[nEV!qDI\J9=DoA.=9e*#E3l/71LjG1QPHa).ZuOl[\OYai59Ih%=-0t%+:;M)75JASAiHmft_?G:0RI`93.Q]ZEu0g1'X$rH+Y\Yj]SNiG5aaS"u`>R#RMMi@K'FJ+U\cu;.qq^;-P?#;k4,FI:jNfY_3bb%bhF289e%FK_=6,rlNd)9Uo^rimgK_40_/o/u%6%gJ`@]EKkIbW+jq26MQt*,Up'iqFJdTc^%qrkE,N#=18JI-U^5:IK/o%_$B=$<t@'ZQX/>Q?/$agT**1+jVbiEG6YOIBn^V1h[(N>4@D@b?dU/H/0,lFITD2]*AP3W='aPgl+hCn_oL2H=[PRKhJWnQ<[/XsL;"E>@:9\-#ZA`,_@GDN:RaX-p%.Bn]YTELaG7g^+lih)Y&!Bd*nl0fL:A*0f$E;0FqkQl'LqNZSO*2A;"Z!9!7s`k[F[dJ*:rJFW^"%BVc0e27\&lm)E3Nc/aH22R,&-3Zk*O7ncC!AX#JZ&DtW;*eQ8T5-f7R3Q'^2?%;L_887Wj=U^7X?L.sVj>+!btFI-"lK]^$k`e!%pA,-fg(1uC7#h<9\I0P1o[\t#3g:ooljbTra^nEK+G`8N5SIthW;Q-nLTL3rOg`B&O8m5]/JrfMVoAnrT"VbZMAINGnX<'Fc\q:8+WSYdkdV'Ecl7jmA]?cA=kU\.\^U8dk9-&IVEaB@R,u5C`1Uok0e,qRJF7`C06unsR;*.5+3/,5X'ho?aVC(c:6]X][=sK%%_+2kb!d-g7%ISs?(t'Xkd;:75_;9XJnF0'Tj:7X`gBgNh$PlfHOg&b0<go2>IdOEh@(NG,H[c<=T9&_8#X\h/q5e]akgn(TZGCY'\YZ"tUthOIo_f%[,*S5s\C+n[+?&$Vfor,tLJ=P>T:*gt(/sgL,f6LA[QTYRfPO"T)Ri<h^GG0LEn2"7Vahrdi'H<LHF8?T&aa86a0Y;*M*N[Z'%4CRd\%U!#@]IDq)B&kqqP.4M2l,o.#19:2u8\bR/IC')%`)~>
+endstream
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000000015 00000 n 
+0000000311 00000 n 
+0000000391 00000 n 
+0000000440 00000 n 
+0000000727 00000 n 
+0000004789 00000 n 
+0000004896 00000 n 
+0000005003 00000 n 
+0000005111 00000 n 
+0000005219 00000 n 
+0000005329 00000 n 
+0000005439 00000 n 
+0000005545 00000 n 
+0000005739 00000 n 
+0000005931 00000 n 
+0000007599 00000 n 
+0000007663 00000 n 
+0000007855 00000 n 
+0000010103 00000 n 
+0000010295 00000 n 
+trailer
+<<
+/Size 21
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+11489
+%%EOF

@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this graph or certificate package, please cite the accompanying paper."
+title: "Topological Limits of Behavioral Regulation in Antitrust: Graph Data and Lean Certificates"
+type: software
+authors:
+  - family-names: "Chan"
+    given-names: "Alex"
+    affiliation: "Harvard University and National Bureau of Economic Research (NBER)"
+    orcid: "https://orcid.org/0000-0002-2116-4544"
+version: 1.0.0
+date-released: 2026-09-09
+repository-code: "https://github.com/alexgocardinal/dirac60-critical-graph"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Topological Limits of Behavioral Regulation in Antitrust"
+  authors:
+    - family-names: "Chan"
+      given-names: "Alex"
+      affiliation: "Harvard University and National Bureau of Economic Research (NBER)"
+      orcid: "https://orcid.org/0000-0002-2116-4544"
+  year: 2026
+  notes: "Add the journal, DOI, or arXiv identifier when available."

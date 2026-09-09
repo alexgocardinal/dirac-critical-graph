@@ -1,0 +1,14 @@
+AxiomAudit.lean: OK
+BalancedPuncture.lean: OK
+Dirac60.lean: OK
+Dirac60Certificates.lean: OK
+Dirac60Result.lean: OK
+UniversalDecoupling.lean: OK
+README.md: OK
+STATIC_AUDIT.md: OK
+candidate60.edgelist: OK
+certificates.json: OK
+generate_certificates.py: OK
+lakefile.lean: OK
+lean-toolchain: OK
+replay_certificates.py: OK

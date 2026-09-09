@@ -1,0 +1,37 @@
+⚠ [2792/2796] Replayed Dirac60.Certificate
+warning: ././././Dirac60/Certificate.lean:60:3: unused variable `c0a`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+warning: ././././Dirac60/Certificate.lean:60:7: unused variable `c0b`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+warning: ././././Dirac60/Certificate.lean:143:3: unused variable `c0a`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+warning: ././././Dirac60/Certificate.lean:143:7: unused variable `c0b`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+info: ././././Dirac60/Certificate.lean:702:0: 'Dirac60.puncture_balance_universal' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+info: ././././Dirac60/Certificate.lean:703:0: 'Dirac60.normalized_puncture_classifier' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+info: ././././Dirac60/Certificate.lean:704:0: 'Dirac60.q3_ge_two_encoded' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+info: ././././Dirac60/Certificate.lean:705:0: 'Dirac60.no_at_most_one_bad_edge' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+info: ././././Dirac60/Certificate.lean:706:0: 'Dirac60.certified_dirac_result' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+ℹ [2793/2796] Replayed Dirac60.UniversalDecoupling
+info: ././././Dirac60/UniversalDecoupling.lean:46:0: 'UniversalDecoupling.iff_ge_four' depends on axioms: [propext, Quot.sound]
+Build completed successfully.
+⚠ [2792/2796] Replayed Dirac60.Certificate
+warning: ././././Dirac60/Certificate.lean:60:3: unused variable `c0a`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+warning: ././././Dirac60/Certificate.lean:60:7: unused variable `c0b`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+warning: ././././Dirac60/Certificate.lean:143:3: unused variable `c0a`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+warning: ././././Dirac60/Certificate.lean:143:7: unused variable `c0b`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+info: ././././Dirac60/Certificate.lean:702:0: 'Dirac60.puncture_balance_universal' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+info: ././././Dirac60/Certificate.lean:703:0: 'Dirac60.normalized_puncture_classifier' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+info: ././././Dirac60/Certificate.lean:704:0: 'Dirac60.q3_ge_two_encoded' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+info: ././././Dirac60/Certificate.lean:705:0: 'Dirac60.no_at_most_one_bad_edge' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+info: ././././Dirac60/Certificate.lean:706:0: 'Dirac60.certified_dirac_result' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+ℹ [2793/2796] Replayed Dirac60.UniversalDecoupling
+info: ././././Dirac60/UniversalDecoupling.lean:46:0: 'UniversalDecoupling.iff_ge_four' depends on axioms: [propext, Quot.sound]
+Dirac60 Lean certificate elaborated successfully.
+edges: 180
+all concrete vertex witnesses valid: true
+displayed three-colour defect: 2
