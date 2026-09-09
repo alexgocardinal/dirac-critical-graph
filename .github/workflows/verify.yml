@@ -1,0 +1,70 @@
+name: Verify certificates
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  compact-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf \
+            https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Update compact project
+        working-directory: lean_bv
+        run: lake update
+      - name: Download Mathlib cache
+        working-directory: lean_bv
+        run: lake exe cache get
+      - name: Build compact certificate
+        working-directory: lean_bv
+        run: lake build
+      - name: Run compact executable
+        working-directory: lean_bv
+        run: lake exe dirac60-check
+      - name: Audit generated compact source
+        working-directory: lean_bv
+        run: python3 audit_generation.py
+
+  structured-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf \
+            https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Update structured project
+        working-directory: lean_search_tree
+        run: lake update
+      - name: Download Mathlib cache
+        working-directory: lean_search_tree
+        run: lake exe cache get
+      - name: Build structured certificate
+        working-directory: lean_search_tree
+        run: lake build
+      - name: Print axiom audit
+        working-directory: lean_search_tree
+        run: lake env lean AxiomAudit.lean
+      - name: Replay all search trees
+        working-directory: lean_search_tree
+        run: python3 replay_certificates.py
+      - name: Verify structured checksums
+        working-directory: lean_search_tree
+        run: sha256sum --check SHA256SUMS
+      - name: Run graph-level independent audits
+        run: |
+          python3 verifier/verify_structure.py
+          python3 audits/independent_certificate_audit.py
+      - name: Compile and run standalone exact verifier
+        run: |
+          g++ -std=c++20 -O3 verifier/verify_candidate60.cpp -o verify_candidate60
+          ./verify_candidate60 graph/candidate60.edgelist
