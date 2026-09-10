@@ -8,6 +8,13 @@ and reproducibility records.
 Antitrust*), Alex Chan (Harvard University and NBER),
 [ORCID 0000-0002-2116-4544](https://orcid.org/0000-0002-2116-4544).
 
+## Permanent archive
+
+Version 1.0.0 of the complete verification and reproducibility package is
+permanently archived in Harvard Dataverse:
+
+[Harvard Dataverse DOI] (https://doi.org/10.7910/DVN/PULBFB)
+
 ## Main result
 
 There is an explicit finite graph `G` on 60 vertices such that:
