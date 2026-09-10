@@ -8,8 +8,13 @@ authors:
     affiliation: "Harvard University and National Bureau of Economic Research (NBER)"
     orcid: "https://orcid.org/0000-0002-2116-4544"
 version: 1.0.0
+doi: "10.7910/DVN/PULBFB"
+identifiers:
+  - type: doi
+    value: "10.7910/DVN/PULBFB"
+    description: "Harvard Dataverse archive of the frozen version 1.0.0 verification package."
 date-released: 2026-09-09
-repository-code: "https://github.com/alexgocardinal/dirac60-critical-graph"
+repository-code: "https://github.com/alexgocardinal/dirac-critical-graph"
 license: MIT
 preferred-citation:
   type: article
