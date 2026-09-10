@@ -4,7 +4,7 @@ This repository accompanies the paper and supplies the explicit graph,
 two complementary Lean 4 certificates, independent verification programs,
 and reproducibility records.
 
-**Accompanying paper:** *Allocating Divested Assets under Antitrust Regulation: A Graph-Theoretic Obstruction and the Resolution of Dirac’s Conjecture* (previously *Topological Limits of Behavioral Regulation in
+**Accompanying paper:** *Allocating Divested Assets under Antitrust Regulation: A Graph-Theoretic Obstruction and the Resolution of Dirac’s Conjecture* and *Feasibility in Spectrum Repacking and the Resolution of Dirac’s Conjecture* (previously *Topological Limits of Behavioral Regulation in
 Antitrust*), Alex Chan (Harvard University and NBER),
 [ORCID 0000-0002-2116-4544](https://orcid.org/0000-0002-2116-4544).
 
